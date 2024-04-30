@@ -1,4 +1,4 @@
-
+import time 
 # High Scores
 highScores = [
   {"score":180,"Name":"Billy"},
@@ -187,6 +187,23 @@ while playAgain.lower() == "yes":
       # easy difficulty loop
     if userDifficulty.lower() == "easy":
       answer = input("\n"+quizQs[i]["question"])
+
+      start_time = time.time() #start the timer
+      elapsed_time = 0
+
+      while elapsed_time < 30: # 30 second timer  
+        elapsed_time = time.time() - start_time
+        if elapsed_time >= 30:
+          print("\nTime's up!\n")
+          break
+
+      if elapsed_time < 30: #if time hasn't run out
+        if answer.lower() == st(quizQs[i]["answer"]).lower():
+          print("\n" + "Congratulations that is correct!" + "\n")
+          correctAnswers += 1
+          playerScore =+ 5
+        else: 
+          print("\n" + "That is incorrect!" + "\n")
 
       if answer.lower() == str(quizQs[i]["answer"]).lower():
         print("\n" + "Congratulations that is correct!" + "\n")
