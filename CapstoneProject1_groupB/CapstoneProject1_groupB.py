@@ -205,34 +205,52 @@ while playAgain.lower() == "yes":
         else: 
           print("\n" + "That is incorrect!" + "\n")
 
-      if answer.lower() == str(quizQs[i]["answer"]).lower():
-        print("\n" + "Congratulations that is correct!" + "\n")
-        correctAnswers += 1
-        playerScore += 5
-      else:
-        print("\n" + "That is incorrect!" + "\n")
-
+    
         # Medium difficulty loop
     elif userDifficulty.lower() == "medium":
       answer = input("\n"+quizQs[i]["question"]+ quizQs[i]["questionMed"])
 
-      if answer.lower() == str(quizQs[i]["answer"]).lower():
-        print("\n" + "Congratulations that is correct!" + "\n")
-        correctAnswers += 1
-        playerScore += 8
-      else:
-        print("\n" + "That is incorrect!" + "\n")
+      start_time #start timer
+      elapsed_time = 0 
+
+      while elapsed_time < 20: #20 second timer 
+        elapsed_time = time.time() - start_time
+        if elapsed_time >= 20:
+          print("\nTime's up!\n")
+          break
+
+      if elapsed_time < 20: #time hasnt run out
+        if answer.lower() == st(quizQs[i]["answer"]).lower():
+           print("\n" + "Congratulations that is correct!" + "\n")
+          correctAnswers += 1
+          playerScore =+ 8
+        else: 
+          print("\n" + "That is incorrect!" + "\n")
+        
+
 
         # Hard difficulty loop
-    elif userDifficulty.lower() == "hard":
+   elif userDifficulty.lower() == "hard":
       answer = input("\n"+quizQs[i]["question"]+ quizQs[i]["questionMed"]+ quizQs[i]["questionHard"])
 
-      if answer.lower() == str(quizQs[i]["answer"]).lower():
-        print("\n" + "Congratulations that is correct!" + "\n")
-        correctAnswers += 1
-        playerScore += 10
-      else:
-        print("\n" + "That is incorrect!" + "\n")    
+      start_time
+      elapsed_time = 0 
+
+       while elapsed_time < 10: #10 second timer 
+        elapsed_time = time.time() - start_time
+        if elapsed_time >= 10:
+          print("\nTime's up!\n")
+          break
+
+     if elapsed_time < 10: #time hasnt run out
+        if answer.lower() == st(quizQs[i]["answer"]).lower():
+           print("\n" + "Congratulations that is correct!" + "\n")
+          correctAnswers += 1
+          playerScore =+ 10
+        else: 
+          print("\n" + "That is incorrect!" + "\n")
+
+      )    
 
   # total score and prize money print statement
   print(f"You scored {correctAnswers} out of 20.\n")
