@@ -1,283 +1,235 @@
-import time 
+import time
+
+# Define a function to sort high scores
+def scoreSort(entry):
+    return entry["score"]
+
 # High Scores
 highScores = [
-  {"score":180,"Name":"Billy"},
-  {"score":90,"Name":"Tommy"},
-  {"score":150,"Name":"Ronny"},
-  {"score":60,"Name":"Timmy"},
-  {"score":80,"Name":"Jimmy"}
+    {"score": 180, "Name": "Billy"},
+    {"score": 90, "Name": "Tommy"},
+    {"score": 150, "Name": "Ronny"},
+    {"score": 60, "Name": "Timmy"},
+    {"score": 80, "Name": "Jimmy"}
 ]
 
-# high scores variable to sort scores in order
-def scoreSort(highScores):
-  return highScores["score"]
-
-# sorted highscores
+# Sort high scores
 highScores = sorted(highScores, key=scoreSort)
 
-# Quiz Questions & Answers
+# Define Quiz Questions & Answers
 quizQs = [
-  # Question 1
-  {
-    "question": "What year was the Premier League founded?\nA: 1992 B:1985 \n",
-    "answer": "A",
-    "questionMed": "C: 1993 D: 1999 \n",
-    "questionHard": "E: 2005 F:1995\n"
-  },
+    # Question 1
+    {
+        "question": "What year was the Premier League founded?\nA: 1992 B: 1985\n",
+        "answer": "A",
+        "questionMed": "C: 1993 D: 1999\n",
+        "questionHard": "E: 2005 F: 1995\n"
+    },
     # Question 2
-  {
-    "question": "Who has won the most Premier League titles?\nA: Chelsea B: Manchester United\n",
-    "answer": "b",
-    "questionMed": "C: Liverpool D: Manchester City\n",
-    "questionHard": "E: Arsenal F:Chelsea\n"
-  },
+    {
+        "question": "Who has won the most Premier League titles?\nA: Chelsea B: Manchester United\n",
+        "answer": "B",
+        "questionMed": "C: Liverpool D: Manchester City\n",
+        "questionHard": "E: Arsenal F: Chelsea\n"
+    },
     # Question 3
-  {
-    "question": "Who holds the record for most Premier League hat-tricks?\nA: Alan Shearer B: Wayne Rooney \n",
-    "answer": "a",
-    "questionMed": "C: Erling Haaland D: Didier Drogba\n",
-    "questionHard": "E: Harry Kane F: Thierry Henry\n"
-  },
+    {
+        "question": "Who holds the record for most Premier League hat-tricks?\nA: Alan Shearer B: Wayne Rooney\n",
+        "answer": "A",
+        "questionMed": "C: Erling Haaland D: Didier Drogba\n",
+        "questionHard": "E: Harry Kane F: Thierry Henry\n"
+    },
     # Question 4
-  {
-    "question": "Who holds the record for most Premier League wins as a manager?\nA: Jose Mourhinio B: Sir Alex Ferguson\n",
-    "answer": "b",
-    "questionMed": "C: Pep Guardiola D: Harry Rednapp\n",
-    "questionHard": "E: Arsene Wenger F: Jurgen Klopp\n"
-  },
+    {
+        "question": "Who holds the record for most Premier League wins as a manager?\nA: Jose Mourinho B: Sir Alex Ferguson\n",
+        "answer": "B",
+        "questionMed": "C: Pep Guardiola D: Harry Redknapp\n",
+        "questionHard": "E: Arsene Wenger F: Jurgen Klopp\n"
+    },
     # Question 5
-  {
-    "question": "Who holds the record for most Premier League red cards?\nA: Patrick Vieira B: Roy Keane \n",
-    "answer": "a",
-    "questionMed": "C: Duncan Ferguson D: Joey Barton\n",
-    "questionHard": "E: John Terry F: Vinnie Jones\n"
-  },
+    {
+        "question": "Who holds the record for most Premier League red cards?\nA: Patrick Vieira B: Roy Keane\n",
+        "answer": "A",
+        "questionMed": "C: Duncan Ferguson D: Joey Barton\n",
+        "questionHard": "E: John Terry F: Vinnie Jones\n"
+    },
     # Question 6
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "What is the highest number of goals scored by a single player in a Premier League season?\nA: 31 B: 34\n",
+        "answer": "B",
+        "questionMed": "C: 29 D: 36\n",
+        "questionHard": "E: 28 F: 38\n"
+    },
     # Question 7
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which team has conceded the fewest goals in a single Premier League season?\nA: Chelsea B: Manchester City\n",
+        "answer": "A",
+        "questionMed": "C: Liverpool D: Arsenal\n",
+        "questionHard": "E: Manchester United F: Tottenham Hotspur\n"
+    },
     # Question 8
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who has scored the fastest hat-trick in Premier League history?\nA: Sadio Mane B: Robbie Fowler\n",
+        "answer": "B",
+        "questionMed": "C: Luis Suarez D: Thierry Henry\n",
+        "questionHard": "E: Sergio Aguero F: Michael Owen\n"
+    },
     # Question 9
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which team won the first Premier League title?\nA: Manchester United B: Arsenal\n",
+        "answer": "A",
+        "questionMed": "C: Blackburn Rovers D: Chelsea\n",
+        "questionHard": "E: Liverpool F: Leeds United\n"
+    },
     # Question 10
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who is the youngest goalscorer in Premier League history?\nA: James Vaughan B: Michael Owen\n",
+        "answer": "A",
+        "questionMed": "C: Wayne Rooney D: Raheem Sterling\n",
+        "questionHard": "E: Federico Macheda F: Francis Jeffers\n"
+    },
     # Question 11
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which team has won the most consecutive Premier League matches?\nA: Manchester City B: Liverpool\n",
+        "answer": "B",
+        "questionMed": "C: Chelsea D: Manchester United\n",
+        "questionHard": "E: Arsenal F: Tottenham Hotspur\n"
+    },
     # Question 12
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who is the oldest player to score in the Premier League?\nA: Teddy Sheringham B: Ryan Giggs\n",
+        "answer": "A",
+        "questionMed": "C: Alan Shearer D: David Beckham\n",
+        "questionHard": "E: Zlatan Ibrahimovic F: Paolo Maldini\n"
+    },
     # Question 13
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which player has the most appearances in the Premier League?\nA: Gareth Barry B: Ryan Giggs\n",
+        "answer": "A",
+        "questionMed": "C: Frank Lampard D: Steven Gerrard\n",
+        "questionHard": "E: John Terry F: Paul Scholes\n"
+    },
     # Question 14
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who has won the Premier League Golden Boot the most times?\nA: Thierry Henry B: Alan Shearer\n",
+        "answer": "B",
+        "questionMed": "C: Cristiano Ronaldo D: Harry Kane\n",
+        "questionHard": "E: Sergio Aguero F: Luis Suarez\n"
+    },
     # Question 15
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which goalkeeper has kept the most clean sheets in Premier League history?\nA: Petr Cech B: David De Gea\n",
+        "answer": "A",
+        "questionMed": "C: Edwin van der Sar D: Joe Hart\n",
+        "questionHard": "E: Thibaut Courtois F: Alisson Becker\n"
+    },
     # Question 16
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who is the only player to have scored a hat-trick in the Premier League, FA Cup, and UEFA Champions League final?\nA: Lionel Messi B: Cristiano Ronaldo\n",
+        "answer": "B",
+        "questionMed": "C: Robert Lewandowski D: Neymar\n",
+        "questionHard": "E: Luis Suarez F: Fernando Torres\n"
+    },
     # Question 17
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which player has the most assists in a single Premier League season?\nA: Kevin De Bruyne B: Thierry Henry\n",
+        "answer": "A",
+        "questionMed": "C: Mesut Ozil D: Cesc Fabregas\n",
+        "questionHard": "E: David Silva F: Ryan Giggs\n"
+    },
     # Question 18
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who is the youngest manager to win the Premier League?\nA: Andre Villas-Boas B: Jose Mourinho\n",
+        "answer": "B",
+        "questionMed": "C: Pep Guardiola D: Jurgen Klopp\n",
+        "questionHard": "E: Antonio Conte F: Roberto Mancini\n"
+    },
     # Question 19
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Which team has won the most FA Cup titles?\nA: Manchester United B: Arsenal\n",
+        "answer": "B",
+        "questionMed": "C: Chelsea D: Liverpool\n",
+        "questionHard": "E: Tottenham Hotspur F: Everton\n"
+    },
     # Question 20
-  {
-    "question": "?\nA:  B:  \n",
-    "answer": "a",
-    "questionMed": "C:  D: \n",
-    "questionHard": "E:  F: \n"
-  },
+    {
+        "question": "Who is the only player to have scored in every minute of a Premier League match?\nA: Sergio Aguero B: Jamie Vardy\n",
+        "answer": "A",
+        "questionMed": "C: Harry Kane D: Mohamed Salah\n",
+        "questionHard": "E: Thierry Henry F: Alan Shearer\n"
+    },
 ]
 
-# user difficulty
-userDifficulty = "easy"
-
 # Welcome Message
-print("Welcome to Capstone Quiz Master, the ultimate quiz game that will test your knowledge!\nWith 20 questions of varying difficulty, this game is designed for players of all backgrounds.\n")
-print("There are three difficulty ratings: Easy, Medium, and Hard. Each question has a point value: Easy (5 points), Medium (8 points), and Hard (10 points).\n")
-print("To answer a question please type the Letter next to the answer. E.g. if the answer was C: 200 then type 'C'.\n")
-print("Think you can conquer Capstone Quiz Master? Gather your friends, family, or fellow trivia enthusiasts and let the challenge begin!\nShow off your knowledge, aim for high scores, and become the ultimate quiz master!\n")
+print("Welcome to Capstone Quiz Master, the ultimate quiz game that will test your knowledge!\n"
+      "With 20 questions of varying difficulty, this game is designed for players of all backgrounds.\n"
+      "There are three difficulty ratings: Easy, Medium, and Hard. Each question has a point value: Easy (5 points), "
+      "Medium (8 points), and Hard (10 points).\n"
+      "To answer a question please type the Letter next to the answer. E.g. if the answer was C: 200 then type 'C'.\n"
+      "Think you can conquer Capstone Quiz Master? Gather your friends, family, or fellow trivia enthusiasts and let the challenge begin!\n"
+      "Show off your knowledge, aim for high scores, and become the ultimate quiz master!\n")
 
-
-# play again status
+# Play again status
 playAgain = "yes"
 
-# While loop start for the quiz
+# While loop for the quiz
 while playAgain.lower() == "yes":
-  userName = input("Please enter your name: " + "\n")
-  userDifficulty = input("Please enter your difficulty: Easy, Medium or Hard " + "\n")
+    userName = input("Please enter your name: ")
+    userDifficulty = input("Please enter your difficulty: Easy, Medium or Hard ")
 
-  correctAnswers = 0
-  playerScore = 0
-  
+    correctAnswers = 0
+    playerScore = 0
 
-  # for loop to run through the 20 questions
-  for i in range(20):
+    # Loop through the questions
+    for i in range(20):
+        if userDifficulty.lower() == "easy":
+            answer = input("\n" + quizQs[i]["question"])
+        elif userDifficulty.lower() == "medium":
+            answer = input("\n" + quizQs[i]["question"] + quizQs[i]["questionMed"])
+        elif userDifficulty.lower() == "hard":
+            answer = input("\n" + quizQs[i]["question"] + quizQs[i]["questionMed"] + quizQs[i]["questionHard"])
 
-      # easy difficulty loop
-    if userDifficulty.lower() == "easy":
-      answer = input("\n"+quizQs[i]["question"])
+        start_time = time.time()  # Start the timer
+        elapsed_time = 0
 
-      start_time = time.time() #start the timer
-      elapsed_time = 0
+        while elapsed_time < 30:  # 30 seconds timer
+            elapsed_time = time.time() - start_time
+            if elapsed_time >= 30:
+                print("\nTime's up!\n")
+                break
 
-      while elapsed_time < 30: # 30 second timer  
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= 30:
-          print("\nTime's up!\n")
-          break
+        if elapsed_time < 30:  # If time hasn't run out
+            if answer.lower() == quizQs[i]["answer"].lower():
+                print("\nCongratulations that is correct!\n")
+                correctAnswers += 1
+                if userDifficulty.lower() == "easy":
+                    playerScore += 5
+                elif userDifficulty.lower() == "medium":
+                    playerScore += 8
+                elif userDifficulty.lower() == "hard":
+                    playerScore += 10
+            else:
+                print("\nThat is incorrect!\n")
 
-      if elapsed_time < 30: #if time hasn't run out
-        if answer.lower() == st(quizQs[i]["answer"]).lower():
-          print("\n" + "Congratulations that is correct!" + "\n")
-          correctAnswers += 1
-          playerScore =+ 5
-        else: 
-          print("\n" + "That is incorrect!" + "\n")
+    # Display score and leaderboard
+    print(f"You scored {correctAnswers} out of 20.\n")
 
-    
-        # Medium difficulty loop
-    elif userDifficulty.lower() == "medium":
-      answer = input("\n"+quizQs[i]["question"]+ quizQs[i]["questionMed"])
+    if playerScore > highScores[0]["score"]:
+        print("Congratulations you made it onto the Leaderboard!\n")
+        highScores[0]["Name"] = userName
+        highScores[0]["score"] = playerScore
+        highScores = sorted(highScores, key=scoreSort)
 
-      start_time #start timer
-      elapsed_time = 0 
+    print("LeaderBoard:")
+    for i, score in enumerate(highScores[::-1]):
+        print(f"{i+1} Place = {score['Name']}: {score['score']}")
 
-      while elapsed_time < 20: #20 second timer 
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= 20:
-          print("\nTime's up!\n")
-          break
+    # Ask if the player wants to play again
+    playAgain = input("\nWould you like to play again? (Yes or No): ")
 
-      if elapsed_time < 20: #time hasnt run out
-        if answer.lower() == st(quizQs[i]["answer"]).lower():
-           print("\n" + "Congratulations that is correct!" + "\n")
-          correctAnswers += 1
-          playerScore =+ 8
-        else: 
-          print("\n" + "That is incorrect!" + "\n")
-        
-
-
-        # Hard difficulty loop
-   elif userDifficulty.lower() == "hard":
-      answer = input("\n"+quizQs[i]["question"]+ quizQs[i]["questionMed"]+ quizQs[i]["questionHard"])
-
-      start_time
-      elapsed_time = 0 
-
-       while elapsed_time < 10: #10 second timer 
-        elapsed_time = time.time() - start_time
-        if elapsed_time >= 10:
-          print("\nTime's up!\n")
-          break
-
-     if elapsed_time < 10: #time hasnt run out
-        if answer.lower() == st(quizQs[i]["answer"]).lower():
-           print("\n" + "Congratulations that is correct!" + "\n")
-          correctAnswers += 1
-          playerScore =+ 10
-        else: 
-          print("\n" + "That is incorrect!" + "\n")
-
-      )    
-
-  # total score and prize money print statement
-  print(f"You scored {correctAnswers} out of 20.\n")
-  
-
-  # Update high scores
-  if playerScore > highScores[0]["score"]:
-    print("Congratulations you made it onto the Leaderboard!\n")
-    highScores[0]["Name"] = userName
-    highScores[0]["score"] = playerScore
-    highScores = sorted(highScores, key=scoreSort)
-
-  # displays updated leaderboard
-  print(f"LeaderBoard:\n1st Place = {highScores[-1]['Name']}:\t {highScores[-1]['score']}")
-  print(f"2nd Place = {highScores[-2]['Name']}:\t {highScores[-2]['score']}")
-  print(f"3rd Place = {highScores[-3]['Name']}:\t {highScores[-3]['score']}")
-  print(f"4th Place = {highScores[-4]['Name']}:\t {highScores[-4]['score']}")
-  print(f"5th Place = {highScores[-5]['Name']}:\t {highScores[-5]['score']}")
-  
-
-  # Question to check if player wants to play again
-  playAgain = input("\nWould you like to play again? (Yes or No): ")
-
-  #Displays a thank you message if the player doesn't want to play again
+# Thank you message
 if playAgain.upper() == "NO":
-  print("\n"+"Thank you for Playing!")  
-
+    print("\nThank you for Playing!")
 
 
 
